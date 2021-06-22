@@ -53,7 +53,9 @@ class _LoginPageState extends State<LoginPage> {
                     padding:
                         const EdgeInsets.only(left: 40, right: 40, top: 40),
                     child: SocialLoginButton(
-                      onTap: () => {print("Clicou")},
+                      onTap: () {
+                        print("Clicou");
+                      },
                     ),
                   ),
                 ],
