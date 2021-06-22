@@ -1,10 +1,10 @@
 # NLW_Togther_Flutter
  
-Esse repositório foi criado para acompanhar as aulas do NLW Togethr Flutter.
+Esse repositório foi criado para acompanhar as aulas do NLW Togethr trilha de Flutter.
 
 ## Passo a passo das aulas:
 
-### Aula 1:
+### Aula 01:
 
 1. Apresentação do Flutter e do planejamento do curso;
 1. Apresentação do Aplicativo que será desenvolvido;
@@ -26,6 +26,10 @@ Esse repositório foi criado para acompanhar as aulas do NLW Togethr Flutter.
     * Aprendizado do conceito de stateless e statefull;
     * Utilização do comando para atualização do State `setState(() {})`;
     * Conclusão do primeiro projeto simples.
+
+### Aula 02:
+
+1. Apresentação do projeto da trilha;
 
 
     
