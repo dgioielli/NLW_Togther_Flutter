@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:payflow/shared/socialLogin/socialLoginButton.dart';
 import 'package:payflow/shared/themes/AppColors.dart';
 import 'package:payflow/shared/themes/AppImages.dart';
 import 'package:payflow/shared/themes/AppTextStyles.dart';
@@ -32,7 +33,7 @@ class _LoginPageState extends State<LoginPage> {
                 right: 0,
                 child: Image.asset(AppImages.person, width: 208, height: 300)),
             Positioned(
-              bottom: size.height * 0.25,
+              bottom: size.height * 0.15,
               left: 0,
               right: 0,
               child: Column(
@@ -46,6 +47,13 @@ class _LoginPageState extends State<LoginPage> {
                       "Organize todas as suas contas em um lugar!",
                       textAlign: TextAlign.center,
                       style: AppTextStyles.titleHome,
+                    ),
+                  ),
+                  Padding(
+                    padding:
+                        const EdgeInsets.only(left: 40, right: 40, top: 40),
+                    child: SocialLoginButton(
+                      onTap: () => {print("Clicou")},
                     ),
                   ),
                 ],
