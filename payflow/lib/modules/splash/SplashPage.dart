@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:payflow/shared/auth/AuthController.dart';
 import 'package:payflow/shared/themes/AppColors.dart';
 import 'package:payflow/shared/themes/AppImages.dart';
 
@@ -8,6 +9,8 @@ class SplashPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final authController = AuthController();
+    authController.currentUser(context);
     return Scaffold(
       backgroundColor: AppColors.background,
       body: Stack(
