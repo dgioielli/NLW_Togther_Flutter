@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:payflow/modules/home/HomeController.dart';
 import 'package:payflow/shared/themes/AppColors.dart';
 import 'package:payflow/shared/themes/AppTextStyles.dart';
@@ -72,6 +73,7 @@ class _HomePageState extends State<HomePage> {
             GestureDetector(
               onTap: () {
                 print("Clicou!");
+                Navigator.pushNamed(context, "/barcode_scanner");
                 //controller.setPage(1);
               },
               child: Container(
