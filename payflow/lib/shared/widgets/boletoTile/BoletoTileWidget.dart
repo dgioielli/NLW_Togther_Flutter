@@ -5,29 +5,36 @@ import 'package:payflow/shared/themes/AppTextStyles.dart';
 
 class BoletoTileWidget extends StatelessWidget {
   final BoletoModel model;
-  const BoletoTileWidget({Key? key, required this.model}) : super(key: key);
+  final void Function(BoletoModel)? onTap;
+  const BoletoTileWidget({Key? key, required this.model, this.onTap})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return AnimatedCard(
       direction: AnimatedCardDirection.right,
-      child: ListTile(
-        contentPadding: EdgeInsets.zero,
-        title: Text(
-          model.name!,
-          style: AppTextStyles.titleListTile,
+      child: InkWell(
+        onTap: () {
+          if (onTap != null) onTap!(model);
+        },
+        child: ListTile(
+          contentPadding: EdgeInsets.zero,
+          title: Text(
+            model.name!,
+            style: AppTextStyles.titleListTile,
+          ),
+          subtitle: Text("Vence em ${model.dueDate}"),
+          trailing: Text.rich(TextSpan(
+            text: "R\$ ",
+            style: AppTextStyles.trailingRegular,
+            children: [
+              TextSpan(
+                text: "${model.value!.toStringAsFixed(2)}",
+                style: AppTextStyles.trailingBold,
+              ),
+            ],
+          )),
         ),
-        subtitle: Text("Vence em ${model.dueDate}"),
-        trailing: Text.rich(TextSpan(
-          text: "R\$ ",
-          style: AppTextStyles.trailingRegular,
-          children: [
-            TextSpan(
-              text: "${model.value!.toStringAsFixed(2)}",
-              style: AppTextStyles.trailingBold,
-            ),
-          ],
-        )),
       ),
     );
   }

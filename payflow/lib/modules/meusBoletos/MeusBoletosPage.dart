@@ -1,5 +1,6 @@
 import 'package:animated_card/animated_card.dart';
 import 'package:flutter/material.dart';
+import 'package:payflow/modules/home/HomeController.dart';
 import 'package:payflow/shared/models/BoletoModel.dart';
 import 'package:payflow/shared/themes/AppColors.dart';
 import 'package:payflow/shared/themes/AppTextStyles.dart';
@@ -8,7 +9,9 @@ import 'package:payflow/shared/widgets/boletoList/BoletoListController.dart';
 import 'package:payflow/shared/widgets/boletoList/BoletoListWidget.dart';
 
 class MeusBoletosPage extends StatefulWidget {
-  const MeusBoletosPage({Key? key}) : super(key: key);
+  final HomeController homeController;
+  const MeusBoletosPage({Key? key, required this.homeController})
+      : super(key: key);
 
   @override
   _MeusBoletosPageState createState() => _MeusBoletosPageState();
@@ -21,6 +24,10 @@ class _MeusBoletosPageState extends State<MeusBoletosPage> {
 
   @override
   Widget build(BuildContext context) {
+    final onTap = (BoletoModel boleto) {
+      print(boleto.name);
+      widget.homeController.editBoleto = boleto;
+    };
     return SingleChildScrollView(
       child: Column(
         children: [
@@ -66,6 +73,7 @@ class _MeusBoletosPageState extends State<MeusBoletosPage> {
             padding: const EdgeInsets.symmetric(horizontal: 24),
             child: BoletoListWidget(
               controller: controller,
+              onTap: onTap,
             ),
           ),
         ],
