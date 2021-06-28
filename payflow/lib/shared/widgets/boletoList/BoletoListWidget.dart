@@ -5,9 +5,14 @@ import 'package:payflow/shared/widgets/boletoTile/BoletoTileWidget.dart';
 
 class BoletoListWidget extends StatefulWidget {
   final BoletoListController controller;
+  final bool isPayed;
   final void Function(BoletoModel)? onTap;
-  const BoletoListWidget({Key? key, required this.controller, this.onTap})
-      : super(key: key);
+  const BoletoListWidget({
+    Key? key,
+    required this.controller,
+    this.onTap,
+    required this.isPayed,
+  }) : super(key: key);
 
   @override
   _BoletoListWidgetState createState() =>
@@ -25,6 +30,10 @@ class _BoletoListWidgetState extends State<BoletoListWidget> {
       valueListenable: controller.boletosNotifier,
       builder: (_, boletos, __) => Column(
         children: controller.boletos
+            .where((element) =>
+                (widget.isPayed && element.isPayed == true) ||
+                (!widget.isPayed && element.isPayed != true))
+            .toList()
             .map((e) => BoletoTileWidget(
                   model: e,
                   onTap: widget.onTap,

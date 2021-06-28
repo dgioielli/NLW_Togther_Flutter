@@ -74,6 +74,7 @@ class _MeusBoletosPageState extends State<MeusBoletosPage> {
             child: BoletoListWidget(
               controller: controller,
               onTap: onTap,
+              isPayed: false,
             ),
           ),
         ],

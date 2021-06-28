@@ -4,6 +4,7 @@ import 'package:payflow/modules/barcodeSacnner/BarcodeScannerPage.dart';
 import 'package:payflow/modules/home/HomePage.dart';
 import 'package:payflow/modules/insertBoleto/InsertBoletoPage.dart';
 import 'package:payflow/modules/splash/SplashPage.dart';
+import 'package:payflow/shared/keys/RouteKeys.dart';
 import 'package:payflow/shared/models/UserModel.dart';
 
 //import 'modules/home/HomePage.dart';
@@ -29,15 +30,15 @@ class AppWidget extends StatelessWidget {
       //home: SplashPage(),
       //home: HomePage(),
       //home: LoginPage(),
-      initialRoute: "/splash",
+      initialRoute: RouteKeys.splash,
       routes: {
-        "/home": (context) => HomePage(
+        RouteKeys.home: (context) => HomePage(
               user: ModalRoute.of(context)!.settings.arguments as UserModel,
             ),
-        "/login": (context) => LoginPage(),
-        "/splash": (context) => SplashPage(),
-        "/barcode_scanner": (context) => BarcodeScannerPage(),
-        "/insert_boleto": (context) => InsertBoletoPage(
+        RouteKeys.login: (context) => LoginPage(),
+        RouteKeys.splash: (context) => SplashPage(),
+        RouteKeys.barcode_scanner: (context) => BarcodeScannerPage(),
+        RouteKeys.insert_boleto: (context) => InsertBoletoPage(
               barcode: ModalRoute.of(context) != null
                   ? ModalRoute.of(context)!.settings.arguments.toString()
                   : null,

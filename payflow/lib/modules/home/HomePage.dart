@@ -6,6 +6,7 @@ import 'package:payflow/modules/extract/ExtractPage.dart';
 import 'package:payflow/modules/home/HomeController.dart';
 import 'package:payflow/shared/models/BoletoModel.dart';
 import 'package:payflow/shared/models/UserModel.dart';
+import 'package:payflow/shared/services/BoletoService.dart';
 import 'package:payflow/shared/themes/AppColors.dart';
 import 'package:payflow/shared/themes/AppTextStyles.dart';
 
@@ -199,7 +200,15 @@ class _HomePageState extends State<HomePage> {
                                       color: AppColors.primary,
                                     ),
                                     child: TextButton(
-                                      onPressed: () {},
+                                      onPressed: () {
+                                        final updateBoleto = controller
+                                            .editBoleto!
+                                            .copyWith(isPayed: true);
+                                        BoletoService()
+                                            .saveUpdateBoleto(updateBoleto);
+                                        controller.editBoleto = null;
+                                        setState(() {});
+                                      },
                                       child: Center(
                                           child: Text(
                                         "Sim",
@@ -225,7 +234,12 @@ class _HomePageState extends State<HomePage> {
                                   color: AppColors.shape,
                                 ),
                                 child: TextButton(
-                                  onPressed: () {},
+                                  onPressed: () {
+                                    BoletoService()
+                                        .deleteBoleto(controller.editBoleto!);
+                                    controller.editBoleto = null;
+                                    setState(() {});
+                                  },
                                   child: Center(
                                       child: Row(
                                     mainAxisAlignment: MainAxisAlignment.center,

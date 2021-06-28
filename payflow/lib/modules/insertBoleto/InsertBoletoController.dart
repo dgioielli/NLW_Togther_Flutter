@@ -1,10 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:payflow/shared/models/BoletoModel.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+import 'package:payflow/shared/services/BoletoService.dart';
 
 class InsertBoletoCointroller {
   final formKey = GlobalKey<FormState>();
-  BoletoModel boletoModel = BoletoModel();
+  BoletoModel boletoModel = BoletoModel(isPayed: false);
 
   String? validateName(String? value) =>
       value?.isEmpty ?? true ? "O nome não pode ser vazio" : null;
@@ -25,15 +25,6 @@ class InsertBoletoCointroller {
     );
   }
 
-  Future<void> saveBoleto() async {
-    try {
-      final instance = await SharedPreferences.getInstance();
-      final boletos = instance.getStringList("boletos") ?? <String>[];
-      boletos.add(boletoModel.toJson());
-      await instance.setStringList("boletos", boletos);
-    } catch (e) {}
-  }
-
   Future<void> cadastrarBoleto() async {
     final form = formKey.currentState;
     if (form != null) {
@@ -41,7 +32,7 @@ class InsertBoletoCointroller {
       if (form.validate()) {
         print("Válido!");
         print(boletoModel);
-        return saveBoleto();
+        return BoletoService().saveNewBoleto(boletoModel);
       }
     }
   }

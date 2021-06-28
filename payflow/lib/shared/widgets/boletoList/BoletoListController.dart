@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:payflow/shared/models/BoletoModel.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+import 'package:payflow/shared/services/BoletoService.dart';
 
 class BoletoListController {
   final boletosNotifier = ValueNotifier<List<BoletoModel>>(<BoletoModel>[]);
@@ -8,16 +8,10 @@ class BoletoListController {
   set boletos(List<BoletoModel> value) => boletosNotifier.value = value;
 
   BoletoListController() {
-    getBoletos();
+    loadBoletos();
   }
 
-  Future<void> getBoletos() async {
-    try {
-      final instance = await SharedPreferences.getInstance();
-      final response = instance.getStringList("boletos") ?? <String>[];
-      boletos = response.map((e) => BoletoModel.fromJson(e)).toList();
-    } catch (e) {
-      boletos = <BoletoModel>[];
-    }
+  Future<void> loadBoletos() async {
+    boletos = await BoletoService().getBoletos();
   }
 }
