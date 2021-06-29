@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:payflow/modules/MeusBoletos/MeusBoletosPage.dart';
@@ -221,7 +222,52 @@ class _HomePageState extends State<HomePage> {
                               ),
                             ),
                             Padding(
-                              padding: const EdgeInsets.only(top: 25),
+                              padding: const EdgeInsets.only(top: 10),
+                              child: Container(
+                                color: AppColors.stroke,
+                                height: 2,
+                              ),
+                            ),
+                            Expanded(
+                              child: Container(
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(5),
+                                  color: AppColors.shape,
+                                ),
+                                child: TextButton(
+                                  onPressed: () {
+                                    final barcode =
+                                        controller.editBoleto!.barcode ??
+                                            "Nenhum Código";
+                                    print(barcode);
+                                    Clipboard.setData(ClipboardData(
+                                      text: barcode,
+                                    ));
+                                  },
+                                  child: Center(
+                                      child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Text(
+                                        "Copiar código de barras",
+                                        style: AppTextStyles.buttonPrimary,
+                                      ),
+                                      Padding(
+                                        padding: const EdgeInsets.symmetric(
+                                            horizontal: 20.0),
+                                        child: Icon(
+                                          FontAwesomeIcons.clone,
+                                          color: AppColors.primary,
+                                          size: 15,
+                                        ),
+                                      ),
+                                    ],
+                                  )),
+                                ),
+                              ),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.only(top: 0),
                               child: Container(
                                 color: AppColors.stroke,
                                 height: 2,

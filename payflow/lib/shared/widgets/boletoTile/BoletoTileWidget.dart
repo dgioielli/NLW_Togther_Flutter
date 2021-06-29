@@ -11,6 +11,8 @@ class BoletoTileWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isVencido =
+        model.getDueDate().isBefore(DateTime.now()) && model.isPayed != true;
     return AnimatedCard(
       direction: AnimatedCardDirection.right,
       child: InkWell(
@@ -23,7 +25,14 @@ class BoletoTileWidget extends StatelessWidget {
             model.name!,
             style: AppTextStyles.titleListTile,
           ),
-          subtitle: Text("Vence em ${model.dueDate}"),
+          subtitle: Text(
+            isVencido
+                ? "Venceu em ${model.dueDate}"
+                : "Vence em ${model.dueDate}",
+            style: isVencido
+                ? AppTextStyles.titleListTileVencido
+                : AppTextStyles.titleListTile,
+          ),
           trailing: Text.rich(TextSpan(
             text: "R\$ ",
             style: AppTextStyles.trailingRegular,

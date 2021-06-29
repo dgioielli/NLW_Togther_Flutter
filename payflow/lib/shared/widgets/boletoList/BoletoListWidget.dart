@@ -29,16 +29,17 @@ class _BoletoListWidgetState extends State<BoletoListWidget> {
     return ValueListenableBuilder(
       valueListenable: controller.boletosNotifier,
       builder: (_, boletos, __) => Column(
-        children: controller.boletos
-            .where((element) =>
-                (widget.isPayed && element.isPayed == true) ||
-                (!widget.isPayed && element.isPayed != true))
-            .toList()
-            .map((e) => BoletoTileWidget(
-                  model: e,
-                  onTap: widget.onTap,
-                ))
-            .toList(),
+        children:
+            (widget.isPayed ? controller.boletos.reversed : controller.boletos)
+                .where((element) =>
+                    (widget.isPayed && element.isPayed == true) ||
+                    (!widget.isPayed && element.isPayed != true))
+                .toList()
+                .map((e) => BoletoTileWidget(
+                      model: e,
+                      onTap: widget.onTap,
+                    ))
+                .toList(),
       ),
     );
   }

@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:intl/intl.dart';
 
 class BoletoModel {
   final String? name;
@@ -49,6 +50,11 @@ class BoletoModel {
       barcode: map['barcode'],
       isPayed: map['isPayed'],
     );
+  }
+
+  DateTime getDueDate() {
+    final formatter = DateFormat.yMd();
+    return dueDate != null ? formatter.parse(dueDate!) : DateTime.now();
   }
 
   String toJson() => json.encode(toMap());

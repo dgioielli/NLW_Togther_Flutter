@@ -34,6 +34,11 @@ class AppTextStyles {
     fontWeight: FontWeight.w600,
     color: AppColors.heading,
   );
+  static final titleListTileVencido = GoogleFonts.lexendDeca(
+    fontSize: 17,
+    fontWeight: FontWeight.w600,
+    color: AppColors.delete,
+  );
   static final trailingRegular = GoogleFonts.lexendDeca(
     fontSize: 16,
     fontWeight: FontWeight.w400,

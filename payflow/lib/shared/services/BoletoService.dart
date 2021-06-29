@@ -9,6 +9,8 @@ class BoletoService {
       final response =
           instance.getStringList(PreferencesKeys.boletos) ?? <String>[];
       final boletos = response.map((e) => BoletoModel.fromJson(e)).toList();
+      //final dates = boletos.map((e) => e.getDueDate()).toList();
+      //print(dates);
       return boletos;
     } catch (e) {
       return <BoletoModel>[];
@@ -46,6 +48,7 @@ class BoletoService {
 
   Future<void> saveBoletos(List<BoletoModel> boletos) async {
     try {
+      boletos.sort((a, b) => a.getDueDate().compareTo(b.getDueDate()));
       final jsonBoletos = boletos.map((e) => e.toJson()).toList();
       final instance = await SharedPreferences.getInstance();
       await instance.setStringList(PreferencesKeys.boletos, jsonBoletos);
