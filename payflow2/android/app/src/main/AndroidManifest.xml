@@ -2,7 +2,7 @@
     package="com.example.payflow">
    <application
         android:label="payflow"
-        android:icon="@mipmap/ic_launcher">
+        android:icon="@mipmap/money_stack">
         <activity
             android:name=".MainActivity"
             android:launchMode="singleTop"

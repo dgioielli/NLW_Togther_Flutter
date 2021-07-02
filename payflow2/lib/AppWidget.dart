@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:payflow/modules/accountsManager/AccountsPage.dart';
 import 'package:payflow/modules/barcodeSacnner/BarcodeScannerPage.dart';
 import 'package:payflow/modules/home/HomePage.dart';
 import 'package:payflow/modules/insertBoleto/InsertBoletoPage.dart';
@@ -24,17 +25,18 @@ class AppWidget extends StatelessWidget {
     return MaterialApp(
       title: 'Pay Flow',
       theme: ThemeData(
-        primarySwatch: Colors.orange,
+        primarySwatch: Colors.blue,
         primaryColor: AppColors.primary,
       ),
       //home: SplashPage(),
       //home: HomePage(),
       //home: LoginPage(),
-      initialRoute: RouteKeys.splash,
+      initialRoute: RouteKeys.accounts,
       routes: {
         RouteKeys.home: (context) => HomePage(
               user: ModalRoute.of(context)!.settings.arguments as UserModel,
             ),
+        //RouteKeys.home: (context) => TabBarDemo(),
         RouteKeys.login: (context) => LoginPage(),
         RouteKeys.splash: (context) => SplashPage(),
         RouteKeys.barcode_scanner: (context) => BarcodeScannerPage(),
@@ -43,6 +45,7 @@ class AppWidget extends StatelessWidget {
                   ? ModalRoute.of(context)!.settings.arguments.toString()
                   : null,
             ),
+        RouteKeys.accounts: (context) => AccountsPage(),
       },
     );
   }

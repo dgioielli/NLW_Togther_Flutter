@@ -9,6 +9,11 @@ class AppTextStyles {
     fontWeight: FontWeight.w600,
     color: AppColors.shape,
   );
+  static final titleAppBar = GoogleFonts.lexendDeca(
+    fontSize: 26,
+    fontWeight: FontWeight.w600,
+    color: AppColors.shape,
+  );
   static final titleRegular = GoogleFonts.lexendDeca(
     fontSize: 20,
     fontWeight: FontWeight.w400,
