@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:payflow/modules/accountsManager/AccountEditPage.dart';
 import 'package:payflow/modules/accountsManager/AccountsPage.dart';
 import 'package:payflow/modules/barcodeSacnner/BarcodeScannerPage.dart';
 import 'package:payflow/modules/home/HomePage.dart';
@@ -46,6 +47,7 @@ class AppWidget extends StatelessWidget {
                   : null,
             ),
         RouteKeys.accounts: (context) => AccountsPage(),
+        RouteKeys.accounts_edit: (context) => AccountEditPage(),
       },
     );
   }
