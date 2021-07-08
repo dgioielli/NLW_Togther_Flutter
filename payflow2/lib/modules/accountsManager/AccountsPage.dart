@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:payflow/shared/keys/RouteKeys.dart';
 import 'package:payflow/shared/models/ContaModel.dart';
 import 'package:payflow/shared/themes/AppColors.dart';
@@ -70,6 +71,7 @@ class _AccountsPageState extends State<AccountsPage> {
           ],
         ),
       ),
+      //bottomNavigationBar: adContainer,
       floatingActionButton: FloatingActionButton(
         onPressed: () async {
           print("Clicou no +1");

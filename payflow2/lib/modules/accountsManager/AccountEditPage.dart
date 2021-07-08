@@ -30,17 +30,19 @@ class _AccountEditPageState extends State<AccountEditPage> {
                 onChanged: (txt) {}),
             Container(
               child: DropdownButton<String>(
-                  items: _cidades.map((String dropDownStringItem) {
-                    return DropdownMenuItem<String>(
-                      value: dropDownStringItem,
-                      child: Text(dropDownStringItem),
-                    );
-                  }).toList(),
-                  onChanged: (value) {
-                    _itemSelecionado = value!;
-                    setState(() {});
-                  },
-                  value: _itemSelecionado),
+                items: _cidades.map((String dropDownStringItem) {
+                  return DropdownMenuItem<String>(
+                    value: dropDownStringItem,
+                    child: Text(dropDownStringItem),
+                  );
+                }).toList(),
+                onChanged: (value) {
+                  _itemSelecionado = value!;
+                  setState(() {});
+                },
+                value: _itemSelecionado,
+                isExpanded: true,
+              ),
             ),
           ],
         ),
